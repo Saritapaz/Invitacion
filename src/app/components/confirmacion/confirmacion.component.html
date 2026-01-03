@@ -1,0 +1,22 @@
+<div class="confirm-wrapper">
+  <div class="confirm-card">
+    
+    <div *ngIf="estado === 'pendiente'" class="content">
+      <h1>¡Hola!</h1>
+      <p class="question">¿Nos acompañarás en nuestro gran día?</p>
+      
+      <div class="actions">
+        <button class="btn btn-si" (click)="confirmar('S')">SÍ, asistiré</button>
+        <button class="btn btn-no" (click)="confirmar('N')">No podré ir</button>
+      </div>
+    </div>
+
+    <div *ngIf="estado === 'no'" class="content feedback">
+      <div class="icon">heart_broken</div>
+      <h2>Te echaremos de menos</h2>
+      <p>Gracias por avisarnos. Esperamos vernos en otra ocasión.</p>
+      <button class="btn btn-back" (click)="volverAlLogin()">Volver al inicio</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,75 @@
+$color-salmon-bg: #f5c6bb;
+$color-salmon-btn: #e67e5e;
+$color-text-dark: #4a4e69;
+
+.confirm-wrapper {
+  background-color: $color-salmon-bg;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  .confirm-card {
+    background: white;
+    padding: 60px 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+
+    h1, h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: $color-text-dark;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .btn {
+        padding: 15px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &-si {
+          background-color: $color-salmon-btn;
+          color: white;
+          &:hover { transform: translateY(-3px); background: darken($color-salmon-btn, 5%); }
+        }
+
+        &-no {
+          background-color: #f8f8f8;
+          color: #999;
+          &:hover { background: #eee; }
+        }
+      }
+    }
+
+    .feedback {
+      .icon { font-size: 3rem; color: $color-salmon-bg; margin-bottom: 20px; }
+      .btn-back {
+        margin-top: 30px;
+        background: transparent;
+        border: 1px solid $color-salmon-btn;
+        color: $color-salmon-btn;
+        padding: 10px 30px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
