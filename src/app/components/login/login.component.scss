@@ -1,0 +1,159 @@
+// 1. Variables
+$color-salmon-bg: #f5c6bb;
+$color-salmon-btn: #e67e5e;
+$color-text-dark: #4a4e69;
+$color-gray-light: #ccc;
+$white: #ffffff;
+
+// 2. Contenedor Principal
+.login-wrapper {
+  background-color: $color-salmon-bg;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    background-color: $white;
+    padding: 0;
+  }
+}
+
+// 3. Tarjeta Blanca
+.login-card {
+  display: flex;
+  background: $white;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  min-height: 500px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-width: 90%;
+    min-height: auto;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 480px) {
+    box-shadow: none;
+    border-radius: 0;
+    height: 100vh;
+  }
+}
+
+// 4. Lado de la Ilustración (Izquierda)
+.illustration-side {
+  flex: 1;
+  background-color: #fcf6f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    display: none; // Desaparece en móvil
+  }
+}
+
+// 5. Lado del Formulario (Derecha)
+.form-side {
+  flex: 1;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 40px 30px;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: $color-text-dark;
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+
+  .login-form {
+    .input-container {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 100%;
+        border: none;
+        padding: 12px 0;
+        font-size: 1rem;
+        outline: none;
+        color: #555;
+
+        &::placeholder {
+          color: $color-gray-light;
+          font-weight: 300;
+        }
+      }
+    }
+
+    .btn-submit {
+      background-color: $color-salmon-btn;
+      color: $white;
+      border: none;
+      padding: 14px 45px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      float: right;
+      margin-top: 20px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: darken($color-salmon-btn, 5%);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        float: none;
+      }
+    }
+
+    .feedback-messages {
+      clear: both;
+      padding-top: 25px;
+      text-align: right;
+
+      @media (max-width: 768px) {
+        text-align: center;
+      }
+
+      .msg {
+        font-size: 0.9rem;
+        margin: 5px 0;
+        &.error { color: #e74c3c; font-weight: 500; }
+        &.success { color: #2ecc71; font-weight: 500; }
+      }
+    }
+  }
+}

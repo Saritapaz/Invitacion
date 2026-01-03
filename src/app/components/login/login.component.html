@@ -1,0 +1,43 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="illustration-side">
+      <div class="plant-box">
+        <img src="assets/img/decoracion.png" alt="Decoración">
+      </div>
+    </div>
+
+    <div class="form-side">
+      <h1 class="title">Login</h1>
+
+      <form (ngSubmit)="onLogin()" class="login-form">
+        <div class="input-container">
+          <input 
+            type="text" 
+            [(ngModel)]="telefono" 
+            name="telefono" 
+            placeholder="Número de teléfono" 
+            required>
+          <i class="icon-check"></i>
+        </div>
+
+        <div class="input-container">
+          <input 
+            type="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            placeholder="Contraseña" 
+            required>
+        </div>
+
+        <button type="submit" class="btn-submit">Entrar</button>
+
+        <div class="feedback-messages">
+          <p *ngIf="errorMessage" class="msg error">{{ errorMessage }}</p>
+          <p *ngIf="respuestaLogin" class="msg success">
+            Bienvenido! Rol: {{ respuestaLogin.rol }}
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
