@@ -12,14 +12,14 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 @NgModule({
   declarations: [
     AppComponent,
-    InvitacionComponent,
-    FormularioComponent
+    InvitacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    LoginComponent
+    LoginComponent,
+    FormularioComponent
   ],
   providers: [
     provideHttpClient()

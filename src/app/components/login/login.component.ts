@@ -23,19 +23,22 @@ export class LoginComponent {
   onLogin() {
     this.errorMessage = '';
     this.respuestaLogin = undefined; // O null, dependiendo de cómo lo definieras
-    const credentials = { telefono: this.telefono, password: this.password };
+    const credentials = { telefono: this.telefono, password: this.password};
     
     this.authService.login(credentials).subscribe({
       next: (data) => {
         const rolRecibido = data.rol?.trim(); // Quitamos espacios accidentales
         // Guardamos el ID que viene del backend
+        console.log('Datos recibidos del servidor:', data); // <-- AÑADE ESTO PARA DEBUREAR
         localStorage.setItem('userId', data.id.toString());
+        localStorage.setItem('nombre', data.nombre); // Asegúrate de que se llame 'nombre'
+        localStorage.setItem('apellido', data.apellido);
         if (rolRecibido === 'I') {
           console.log('Navegando a confirmación...');
           this.router.navigate(['/confirmacion']);
         } else if (rolRecibido === 'A') {
           console.log('Navegando a formulario...');
-          this.router.navigate(['/formulario-boda']);
+          this.router.navigate(['/formulario']);
         } else {
           console.warn('Rol no reconocido:', rolRecibido);
         }

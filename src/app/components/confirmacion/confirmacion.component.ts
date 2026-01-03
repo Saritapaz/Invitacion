@@ -35,7 +35,7 @@ confirmar(decision: string) {
             next: (res) => {
             if (decision === 'S') {
                 localStorage.setItem('rol', 'ASISTENTE');
-                this.router.navigate(['/formulario-boda']);
+                this.router.navigate(['/formulario']);
             } else {
                 this.estado = 'no';
             }

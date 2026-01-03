@@ -20,4 +20,4 @@ describe('FormularioComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); 

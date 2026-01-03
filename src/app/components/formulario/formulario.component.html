@@ -1,1 +1,64 @@
-<p>formulario works!</p>
+<div class="form-wrapper">
+  <div class="form-card">
+    <h2>Casi hemos terminado...</h2>
+    <p class="subtitle">Necesitamos unos datos extra para que todo sea perfecto.</p>
+
+    <form #miForm="ngForm" (ngSubmit)="enviarFormulario()">
+      
+        <div class="input-group">
+            <label>Nombre y Apellidos</label>
+            <input type="text" [value]="nombre + ' ' + apellido" disabled class="disabled-input">
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Sexo *</label>
+                <select [(ngModel)]="datos.sexo" name="sexo" required #sexo="ngModel">
+                <option value="" disabled selected>Selecciona...</option>
+                <option value="H">Hombre</option>
+                <option value="M">Mujer</option>
+                </select>
+            </div>
+
+            <div class="input-group" *ngIf="datos.sexo === 'M'">
+                <label>Talla de pie *</label>
+                <select [(ngModel)]="datos.tallaPie" name="tallaPie" [required]="datos.sexo === 'M'">
+                <option value="" disabled selected>Selecciona...</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Preferencia de menú *</label>
+            <select [(ngModel)]="datos.comida" name="comida" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="CARNE">Carne</option>
+            <option value="PESCADO">Pescado</option>
+            <option value="VEGANO">Vegano</option>
+            </select>
+        </div>
+
+      <div class="input-group">
+        <label>Alergias / Intolerancias (Opcional)</label>
+        <div class="checkbox-grid">
+          <label *ngFor="let alergia of listaAlergias" class="check-item">
+            <input type="checkbox" (change)="toggleAlergia(alergia.id)">
+            {{alergia.nombre}}
+          </label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>¿Qué canción no puede faltar? *</label>
+        <input type="text" [(ngModel)]="datos.cancion" name="cancion" required placeholder="Título y artista...">
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="miForm.invalid">
+        Confirmar Asistencia
+      </button>
+    </form>
+  </div>
+</div>

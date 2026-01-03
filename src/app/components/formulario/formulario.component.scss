@@ -1,0 +1,97 @@
+$color-salmon-bg: #f5c6bb;
+$color-salmon-btn: #e67e5e;
+
+.form-wrapper {
+  background-color: $color-salmon-bg;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  .form-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    h2 { color: #4a4a4a; margin-bottom: 0.5rem; font-family: 'Montserrat'; }
+    .subtitle { color: #888; margin-bottom: 2rem; font-size: 0.9rem; }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+      label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #666; font-size: 0.85rem; }
+      
+      input, select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #fdfdfd;
+      }
+
+      .disabled-input { background: #f0f0f0; cursor: not-allowed; }
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      .check-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #555; }
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: $color-salmon-btn;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s;
+      &:hover { background: darken($color-salmon-btn, 10%); }
+    }
+  }
+  .error-text {
+  color: #e67e5e;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.info-text {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 10px;
+}
+
+select.ng-invalid.ng-touched, 
+input.ng-invalid.ng-touched {
+  border-color: #e67e5e !important;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+  .input-group { flex: 1; }
+}
+
+.btn-submit:disabled {
+  cursor: not-allowed;
+  transform: none !important;
+}
+.row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 1.5rem;
+
+  .input-group {
+    flex: 1; // Esto hace que ambos midan lo mismo
+  }
+}
+}
