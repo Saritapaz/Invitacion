@@ -18,7 +18,7 @@ export class ConfirmacionComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-confirmar(decision: string) {
+  confirmar(decision: string) {
     const userId = localStorage.getItem('userId');
     if (!userId) {
     alert("Sesión expirada, por favor vuelve a loguearte");
@@ -27,7 +27,7 @@ confirmar(decision: string) {
     }
 
     const payload = { 
-        id: userId,      // Debe coincidir con el nombre en tu DTO de Java
+        id: userId,      
         decision: decision 
     };
 
@@ -37,6 +37,7 @@ confirmar(decision: string) {
                 localStorage.setItem('rol', 'ASISTENTE');
                 this.router.navigate(['/formulario']);
             } else {
+                localStorage.setItem('rol', 'INVITADO');
                 this.estado = 'no';
             }
         },

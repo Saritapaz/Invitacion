@@ -4,5 +4,6 @@ export interface FormularioAsistente {
   tallaPie: string;
   comida: string;
   alergiasIds: number[];
+  autobusesIds: number[];
   cancion: string;
 }

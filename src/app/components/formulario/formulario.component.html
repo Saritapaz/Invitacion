@@ -3,62 +3,96 @@
     <h2>Casi hemos terminado...</h2>
     <p class="subtitle">Necesitamos unos datos extra para que todo sea perfecto.</p>
 
-    <form #miForm="ngForm" (ngSubmit)="enviarFormulario()">
+    <form #miForm="ngForm" (ngSubmit)="enviarTodo()">
       
-        <div class="input-group">
-            <label>Nombre y Apellidos</label>
-            <input type="text" [value]="nombre + ' ' + apellido" disabled class="disabled-input">
+      <div *ngFor="let persona of asistentes; let i = index" class="asistente-section">
+        <hr *ngIf="i > 0">
+        <h3>{{ i === 0 ? 'Tus Datos' : 'Acompañante ' + i }}</h3>
+
+        <div class="row">
+          <div class="input-group">
+            <label>Nombre *</label>
+            <input type="text" [(ngModel)]="persona.nombre" [name]="'nombre' + i" 
+                   required [disabled]="i === 0" class="input-field">
+          </div>
+          <div class="input-group">
+            <label>Apellido *</label>
+            <input type="text" [(ngModel)]="persona.apellido" [name]="'apellido' + i" 
+                   required [disabled]="i === 0" class="input-field">
+          </div>
         </div>
 
         <div class="row">
-            <div class="input-group">
-                <label>Sexo *</label>
-                <select [(ngModel)]="datos.sexo" name="sexo" required #sexo="ngModel">
-                <option value="" disabled selected>Selecciona...</option>
-                <option value="H">Hombre</option>
-                <option value="M">Mujer</option>
-                </select>
-            </div>
+          <div class="input-group">
+            <label>Sexo *</label>
+            <select [(ngModel)]="persona.sexo" [name]="'sexo' + i" required>
+              <option value="" disabled selected>Selecciona...</option>
+              <option value="H">Hombre</option>
+              <option value="M">Mujer</option>
+            </select>
+          </div>
 
-            <div class="input-group" *ngIf="datos.sexo === 'M'">
-                <label>Talla de pie *</label>
-                <select [(ngModel)]="datos.tallaPie" name="tallaPie" [required]="datos.sexo === 'M'">
-                <option value="" disabled selected>Selecciona...</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                </select>
-            </div>
+          <div class="input-group" *ngIf="persona.sexo === 'M'">
+            <label>Talla de pie *</label>
+            <select [(ngModel)]="persona.tallaPie" [name]="'tallaPie' + i" [required]="persona.sexo === 'M'">
+              <option value="" disabled selected>Selecciona...</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+            </select>
+          </div>
         </div>
 
         <div class="input-group">
-            <label>Preferencia de menú *</label>
-            <select [(ngModel)]="datos.comida" name="comida" required>
+          <label>Preferencia de menú *</label>
+          <select [(ngModel)]="persona.comida" [name]="'comida' + i" required>
             <option value="" disabled selected>Selecciona...</option>
             <option value="CARNE">Carne</option>
             <option value="PESCADO">Pescado</option>
             <option value="VEGANO">Vegano</option>
-            </select>
+            <option value="VEGETARIANO">Vegetariano</option>
+          </select>
         </div>
 
-      <div class="input-group">
-        <label>Alergias / Intolerancias (Opcional)</label>
-        <div class="checkbox-grid">
-          <label *ngFor="let alergia of listaAlergias" class="check-item">
-            <input type="checkbox" (change)="toggleAlergia(alergia.id)">
-            {{alergia.nombre}}
-          </label>
+        <div class="input-group">
+          <label>Alergias / Intolerancias (Opcional)</label>
+          <div class="checkbox-grid">
+            <label *ngFor="let alergia of listaAlergias" class="check-item">
+              <input type="checkbox" [checked]="persona.alergiasIds.includes(alergia.id)" (change)="toggleAlergia(persona, alergia.id)">
+              {{alergia.nombre}}
+            </label>
+          </div>
         </div>
+
+        <div class="input-group">
+          <label>¿Qué canción no puede faltar? *</label>
+          <input type="text" [(ngModel)]="persona.cancion" [name]="'cancion' + i" required placeholder="Título y artista...">
+        </div>
+
+        <div class="input-group">
+          <label>¿Necesitas Autobús? (Selecciona los horarios)</label>
+          <div class="checkbox-grid">
+            <label *ngFor="let bus of listaAutobuses" class="check-item">
+              <input type="checkbox" [checked]="persona.autobusesIds.includes(bus.id)" (change)="toggleAutobus(persona, bus.id)">
+              {{bus.nombre}}
+            </label>
+          </div>
+        </div>
+
+        <button type="button" *ngIf="i > 0" (click)="quitarAcompanante(i)" class="btn-remove">
+          Eliminar acompañante
+        </button>
       </div>
 
-      <div class="input-group">
-        <label>¿Qué canción no puede faltar? *</label>
-        <input type="text" [(ngModel)]="datos.cancion" name="cancion" required placeholder="Título y artista...">
-      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-add" (click)="agregarAcompanante()" *ngIf="asistentes.length < 3">
+          + Añadir Acompañante
+        </button>
 
-      <button type="submit" class="btn-submit" [disabled]="miForm.invalid">
-        Confirmar Asistencia
-      </button>
+        <button type="submit" class="btn-submit" [disabled]="miForm.invalid">
+          Confirmar {{ asistentes.length > 1 ? 'toda la' : 'mi' }} Asistencia
+        </button>
+      </div>
     </form>
   </div>
 </div>

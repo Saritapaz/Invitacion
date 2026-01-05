@@ -16,4 +16,8 @@ export class GraciasComponent {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+  consultarDatos() {
+    this.router.navigate(['/consultaDatos']);
+  }
 }

@@ -19,7 +19,9 @@ export class LoginComponent {
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
+
   respuestaLogin?: LoginResponse;
+
   onLogin() {
     this.errorMessage = '';
     this.respuestaLogin = undefined; // O null, dependiendo de cómo lo definieras
@@ -30,15 +32,17 @@ export class LoginComponent {
         const rolRecibido = data.rol?.trim(); // Quitamos espacios accidentales
         // Guardamos el ID que viene del backend
         console.log('Datos recibidos del servidor:', data); // <-- AÑADE ESTO PARA DEBUREAR
+        localStorage.setItem('telefono', this.telefono);
         localStorage.setItem('userId', data.id.toString());
         localStorage.setItem('nombre', data.nombre); // Asegúrate de que se llame 'nombre'
         localStorage.setItem('apellido', data.apellido);
-        if (rolRecibido === 'I') {
+        console.log('Este es el rol recibido: ', rolRecibido);
+        if (!rolRecibido || rolRecibido === '' || rolRecibido === 'I') {
           console.log('Navegando a confirmación...');
           this.router.navigate(['/confirmacion']);
         } else if (rolRecibido === 'A') {
-          console.log('Navegando a formulario...');
-          this.router.navigate(['/formulario']);
+          console.log('Navegando a consultaDatos...');
+          this.router.navigate(['/consultaDatos']);
         } else {
           console.warn('Rol no reconocido:', rolRecibido);
         }

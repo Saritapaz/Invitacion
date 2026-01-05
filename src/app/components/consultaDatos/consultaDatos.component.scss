@@ -1,0 +1,144 @@
+.resumen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: left;
+  margin-top: 15px;
+  background: #fdfaf9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.extra-info {
+  text-align: left;
+  margin-top: 10px;
+  padding: 0 15px;
+  p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  // Estilo idéntico al botón naranja de tu captura
+  .btn-add {
+    background-color: #d37d58; 
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn-remove {
+    background: none;
+    border: 1px solid #d37d58;
+    color: #d37d58;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #fdf2f0; // Color acorde a tu fondo
+}
+
+.form-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    color: #d37d58; // Color del botón naranja de tu captura
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    color: #666;
+    margin-bottom: 30px;
+  }
+}
+
+.resumen-asistente {
+  text-align: left;
+  background: #fffaf9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 5px solid #d37d58;
+
+  h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+
+    p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      color: #555;
+      
+      strong {
+        color: #d37d58;
+      }
+    }
+  }
+}
+
+.acciones-asistente {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+
+  .btn-edit {
+    background-color: #d37d58;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #b96a4a;
+    }
+  }
+
+  .btn-cancel {
+    background-color: transparent;
+    color: #cc3300;
+    padding: 10px;
+    border: 1px solid #cc3300;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: #ffeeee;
+    }
+  }
+}

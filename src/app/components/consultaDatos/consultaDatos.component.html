@@ -1,0 +1,35 @@
+<div class="form-wrapper">
+  <div class="form-card">
+    <h2>Tus datos de asistencia</h2>
+    <p class="subtitle">Aquí puedes revisar la información que nos enviaste.</p>
+
+    <div *ngFor="let persona of asistentes; let i = index" class="asistente-section">
+      <hr *ngIf="i > 0">
+      <h3>{{ persona.nombre }} {{ persona.apellido }}</h3>
+
+      <div class="resumen-grid">
+        <div class="info-item"><strong>Menú:</strong> {{ persona.comida }}</div>
+        <div class="info-item" *ngIf="persona.sexo === 'M'"><strong>Sexo:</strong> Mujer</div>
+        <div class="info-item" *ngIf="persona.sexo === 'H'"><strong>Sexo:</strong> Hombre</div>
+        <div class="info-item" *ngIf="persona.sexo === 'M'"><strong>Talla de pie:</strong> {{ persona.tallaPie }}</div>
+        <div class="info-item"><strong>Canción:</strong> {{ persona.cancion }}</div>
+      </div>
+
+      <div class="extra-info">
+        <p><strong>Alergias:</strong> 
+          <span *ngIf="persona.nombresAlergias?.length">{{ persona.nombresAlergias.join(', ') }}</span>
+          <span *ngIf="!persona.nombresAlergias?.length">Ninguna</span>
+        </p>
+        <p><strong>Autobús:</strong> 
+          <span *ngIf="persona.nombresAutobuses?.length">{{ persona.nombresAutobuses.join(', ') }}</span>
+          <span *ngIf="!persona.nombresAutobuses?.length">No solicitado</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-add" (click)="editarAsistencia()">Editar mis datos</button>
+      <button class="btn-remove" (click)="cancelarAsistencia()">Cancelar asistencia</button>
+    </div>
+  </div>
+</div>
