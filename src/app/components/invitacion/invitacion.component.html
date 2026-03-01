@@ -1,9 +1,9 @@
 <div class="invitation-container">
 
-    <img src="assets/img/sobre-cerrado.png" 
+    <img [src]="sobreAbierto ? 'assets/img/sobre-abierto.png' : 'assets/img/sobre-cerrado.png'"
     alt="Sobre cerrado" 
     class="sobre-img" 
-    [class.abierto]="sobreAbierto"
+    [class.abriendo]="animando"
     (click)="abrirSobre()" />
    
 </div>
