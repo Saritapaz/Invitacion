@@ -1,1 +1,9 @@
-<p>invitacion works!</p>
+<div class="invitation-container">
+
+    <img src="assets/img/sobre-cerrado.png" 
+    alt="Sobre cerrado" 
+    class="sobre-img" 
+    [class.abierto]="sobreAbierto"
+    (click)="abrirSobre()" />
+   
+</div>
